@@ -1,0 +1,21 @@
+>>> from should_dsl import should, should_not
+>>> import matcher_crowd
+
+>>> [1, 2, 3] |should| have_the_same_elements_as([3, 2, 1])
+>>> [1, 2, 3] |should_not| have_the_same_elements_as([1, 2, 3, 4])
+>>> [1, 2, 3] |should_not| have_the_same_elements_as([1, 2, 3, 1])
+>>> [1, 2, 3] |should_not| have_the_same_elements_as([1, 2, 3, 1])
+>>> [1, 2, 3] |should_not| have_the_same_elements_as([1, 2, 4])
+>>> [1, 2, 3, 1] |should_not| have_the_same_elements_as([3, 2, 1])
+>>> 'jim morrison' |should| have_the_same_elements_as('mr mojorisin')
+
+>>> [1, 2, 3] |should| have_the_same_elements_as([1, 4, 2])
+Traceback (most recent call last):
+...
+ShouldNotSatisfied: [1, 2, 3] does not have the same elements as [1, 4, 2]
+
+>>> [1, 2, 3] |should_not| have_the_same_elements_as([3, 2, 1])
+Traceback (most recent call last):
+...
+ShouldNotSatisfied: [1, 2, 3] does have the same elements as [3, 2, 1]
+
